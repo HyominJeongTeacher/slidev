@@ -1,0 +1,9 @@
+# Node.js 설치 결과
+**/node_modules/
+
+# Slidev 정적 빌드 결과
+**/dist/
+
+# 환경 변수 및 편집기 파일
+.env
+.vscode/

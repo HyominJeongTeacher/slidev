@@ -1,0 +1,12 @@
+# Node.js dependencies
+**/node_modules/
+
+# Slidev build output
+**/dist/
+
+# Local environment files
+.env
+.env.*
+
+# Editor-specific files
+.vscode/
