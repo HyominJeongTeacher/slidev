@@ -12,21 +12,27 @@ math: true
 # 파형 읽기: 진폭, 주기, 진동수
 
 <div class="grid grid-cols-3 gap-6 mt-8 text-left">
-  <div class="p-5 border rounded-xl">
-    <h3>진폭</h3>
-    <p>음압 변화의 크기</p>
-    <p>음압 진폭이 클수록 일반적으로 크게 들린다.</p>
-  </div>
-  <div class="p-5 border rounded-xl">
-    <h3>주기 $T$</h3>
-    <p>파형이 한 번 반복되는 시간</p>
-    <p>단위: s</p>
-  </div>
-  <div class="p-5 border rounded-xl">
-    <h3>진동수 $f$</h3>
-    <p>1초 동안의 진동 횟수</p>
-    <p>단위: Hz</p>
-  </div>
+<div class="p-5 border rounded-xl">
+<h3>진폭</h3>
+<p>음압 변화의 크기</p>
+<p>음압 진폭이 클수록 일반적으로 크게 들린다.</p>
+</div>
+
+<div class="p-5 border rounded-xl">
+<h3>주기</h3>
+<p>파형이 한 번 반복되는 시간</p>
+<p>단위: s</p>
+</div>
+
+<div class="p-5 border rounded-xl">
+<h3>진동수</h3>
+<p>1초 동안의 진동 횟수</p>
+<p>단위: Hz</p>
+</div>
+</div>
+
+<div class="mt-8 text-center">
+진동수와 주기의 관계
 </div>
 
 $$
@@ -38,8 +44,8 @@ $$
 # MBL은 무엇을 기록하는가?
 
 - MBL 소리 센서는 시간에 따른 음압 변화 또는 전기 신호를 연속 데이터로 기록한다.
-- 샘플링레이트 $f_s$는 1초 동안 기록하는 데이터 수이다.
-- 분석하려는 최고 주파수 $f_{max}$에 대해 다음 조건이 필요하다.
+- 샘플링레이트(fs)는 1초 동안 기록하는 데이터 수이다.
+- 분석하려는 최고 주파수(fmax)에 대해 다음 조건이 필요하다.
 
 $$
 f_s \geq 2f_{max}
@@ -72,4 +78,4 @@ $$
 f_{\text{beat}} = |f_1 - f_2|
 $$
 
-- 예: $220\,\mathrm{Hz}$와 $222\,\mathrm{Hz}$를 합성하면 $2\,\mathrm{Hz}$의 맥놀이가 나타난다.
+- 예: 220 Hz와 222 Hz를 합성하면 2 Hz의 맥놀이가 나타난다.

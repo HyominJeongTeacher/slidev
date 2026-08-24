@@ -4,12 +4,34 @@
 
 ---
 
-# 연수의 목적
+# 연수 자료와 소통 채널
 
-- 실제 학생 수업에서 사용한 활동을 교사가 재현할 수 있는 수업안으로 정리
-- 표준 장비인 MBL 소리 센서로 음압 데이터를 측정하고 분석
-- 장비 여건에 따라 스마트폰, 노트북, 톤 생성 프로그램으로 대체하는 방법 소개
-- 실제 Google Classroom 수업 사례와 학생 산출물은 추후 링크로 제공
+<div class="grid grid-cols-3 gap-6 mt-8 text-center">
+  <div class="p-4 border rounded-xl">
+    <h3>Google Classroom</h3>
+    <p>수업 자료와 활동지</p>
+  </div>
+  <div class="p-4 border rounded-xl">
+    <h3>Padlet</h3>
+    <p>질문과 자료 공유</p>
+  </div>
+  <div class="p-4 border rounded-xl">
+    <h3>오픈카톡</h3>
+    <p>연수 중 소통과 안내</p>
+  </div>
+</div>
+
+<div class="grid grid-cols-3 gap-6 mt-6 text-center">
+  <div class="border rounded-xl p-3">
+    <img src="./assets/classroom-qr.png" alt="Google Classroom QR 코드" class="mx-auto h-36 object-contain" />
+  </div>
+  <div class="border rounded-xl p-3">
+    <img src="./assets/padlet-qr.png" alt="Padlet QR 코드" class="mx-auto h-36 object-contain" />
+  </div>
+  <div class="border rounded-xl p-3">
+    <img src="./assets/openchat-qr.png" alt="오픈카톡 QR 코드" class="mx-auto h-36 object-contain" />
+  </div>
+</div>
 
 ---
 

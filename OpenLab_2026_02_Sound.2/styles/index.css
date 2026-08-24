@@ -33,3 +33,17 @@ body,
   font-size: 1em;
   line-height: 1.6;
 }
+
+.slide-counter {
+  position: fixed;
+  right: 18px;
+  bottom: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  z-index: 100;
+}
