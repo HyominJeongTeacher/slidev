@@ -34,26 +34,69 @@ math: true
 
 ---
 
-# 파형 관찰 질문
+# 클래스룸 활동지 작성
 
-1. 설정값이 커지면 파형의 주기는 어떻게 달라지는가?
-2. 출력 크기를 높이면 파형의 어떤 값이 변하는가?
-3. 샘플링레이트가 낮으면 파형은 얼마나 신뢰할 수 있는가?
-4. MBL 화면에서 직접 읽은 진동수와 설정값은 얼마나 가까운가?
+<div class="grid grid-cols-3 gap-6 mt-8 text-left">
+  <div class="p-5 border rounded-xl">
+    <h3>활동 1: 주파수 측정과 오차 분석 (Q1)</h3>
+    <ul class="mt-3 space-y-2 text-base">
+      <li>낮은 음과 높은 음의 입력 주파수(A)를 기록</li>
+      <li>파형에서 계산한 측정 주파수(B)를 기록</li>
+      <li>오차 |A-B| / A &times; 100을 계산</li>
+      <li>입력값과 측정값의 오차 원인을 서술</li>
+    </ul>
+  </div>
+  <div class="p-5 border rounded-xl">
+    <h3>활동 2: 소리 크기와 진폭 비교 (Q2)</h3>
+    <ul class="mt-3 space-y-2 text-base">
+      <li>작은 소리와 큰 소리의 파형을 각각 캡처</li>
+      <li>최대 진폭(y축 값)의 차이를 기록</li>
+      <li>소리가 커질 때 변하는 그래프 값을 서술</li>
+    </ul>
+  </div>
+  <div class="p-5 border rounded-xl">
+    <h3>활동 3: 음색 생성기와 실제 목소리 비교 (Q3)</h3>
+    <ul class="mt-3 space-y-2 text-base">
+      <li>음색 생성기 정현파와 사각파를 각각 캡처</li>
+      <li>두 파형의 모양을 비교</li>
+      <li>파형 모양이 다른 이유를 서술</li>
+    </ul>
+  </div>
+</div>
 
-> 관찰의 초점은 “화면의 파형이 실제 소리의 어떤 성질을 나타내는가”이다.
+> 기록, 파형 캡처, 분석 답변은 클래스룸에 올라간 활동지에 작성한다.
+
+---
+
+# 파형에서 주기 측정하기
+
+<div class="grid grid-cols-2 gap-8 mt-6 items-center">
+  <div class="border rounded-xl p-4">
+    <img src="./assets/period-measurement.png" alt="파형에서 최대점 사이 간격으로 주기를 측정하는 예시" class="mx-auto max-h-80 object-contain" />
+  </div>
+  <div class="text-left text-lg">
+    <h2>이 실험 데이터에서 음파의 주기를 구하려면?</h2>
+    <ol class="mt-5 space-y-3">
+      <li>연속된 최고점 사이의 시간 간격을 확인한다.</li>
+      <li>0.001 s부터 0.047 s까지 10개 주기의 간격은 0.046 s이다.</li>
+      <li>주기: 0.046 s / 10 = 0.0046 s</li>
+      <li>진동수: 1 / 0.0046 s &asymp; 217 Hz</li>
+    </ol>
+  </div>
+</div>
 
 ---
 
 # CSV 저장과 공통 데이터 형식
 
-- 측정 데이터는 CSV로 저장해 심화 분석에 사용한다.
+- 측정 데이터는 CSV로 저장해 심화 분석(피팅 등)에 사용할 수 있다.
 - 공통 예제 형식: `time_s`(초), `signal`(음압 또는 전압)
-- 측정 실패 시에는 배포 예제 CSV를 사용해 다음 활동을 계속한다.
 
 ```text
 time_s,signal
 0.000000,0.012
 0.000100,0.034
+0.000200,0.056
+0.000300,0.088
 ...
 ```

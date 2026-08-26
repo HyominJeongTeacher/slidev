@@ -35,6 +35,25 @@ math: true
 
 ---
 
+# 활동 2. 실험 세팅
+
+<div class="grid grid-cols-2 gap-8 mt-8 items-center">
+  <div class="border rounded-xl p-4">
+    <img src="./assets/interference-setup.png" alt="두 스피커와 소리 센서의 간섭 실험 배치" class="mx-auto max-h-80 object-contain" />
+  </div>
+  <div class="text-left text-lg">
+    <ul class="space-y-4">
+      <li>두 스피커를 (0 m, -0.5 m), (0 m, 0.5 m)에 설치한다.</li>
+      <li>하나의 함수발생기 출력을 분기해 두 스피커에 같은 440 Hz 정현파를 공급한다.</li>
+      <li>소리 센서는 (1 m, 0)에서 시작해 y축 방향으로 이동한다.</li>
+      <li>y = 0에서는 보강, 약 y = &plusmn;0.63 m에서는 상쇄 간섭이 예상된다.</li>
+      <li>센서를 y = -1.5 m부터 +1.5 m까지 이동하며 진폭을 기록한다.</li>
+    </ul>
+  </div>
+</div>
+
+---
+
 # 활동 3. 맥놀이 체험
 
 <div class="grid grid-cols-2 gap-8 mt-8 text-left">
@@ -44,7 +63,7 @@ math: true
       <li>두 음원을 220 Hz와 222 Hz로 각각 설정한다.</li>
       <li>두 스피커로 동시에 재생한다.</li>
       <li>MBL 센서를 한 위치에 고정해 수 초간 기록한다.</li>
-      <li>파형의 포락선이 반복되는 주기를 관찰한다.</li>
+      <li>소리 크기가 반복해서 커졌다 작아지는 주기(포락선)를 관찰한다.</li>
     </ol>
   </div>
   <div class="p-5 border rounded-xl">

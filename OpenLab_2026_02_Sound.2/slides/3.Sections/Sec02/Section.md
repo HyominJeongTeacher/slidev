@@ -45,6 +45,8 @@ $$
 
 - MBL 소리 센서는 시간에 따른 음압 변화 또는 전기 신호를 연속 데이터로 기록한다.
 - 샘플링레이트(fs)는 1초 동안 기록하는 데이터 수이다.
+- 나이퀴스트 조건: 진동수 $f$인 신호를 기록하려면 샘플링레이트 $f_s$는 최소 $2f$ 이상이어야 한다.
+  - 예: $440\,\text{Hz}$ 소리는 최소 $880\,\text{Hz}$ 이상으로 기록한다.
 - 분석하려는 최고 주파수(fmax)에 대해 다음 조건이 필요하다.
 
 $$
@@ -52,6 +54,24 @@ f_s \geq 2f_{max}
 $$
 
 - 실제 수업에서는 파형을 충분히 매끄럽게 보기 위해 최소 조건보다 높은 샘플링레이트를 사용한다.
+
+---
+
+# 나이퀴스트 조건을 그림으로 이해하기
+
+<div class="grid grid-cols-2 gap-8 mt-6 items-center">
+  <div class="border rounded-xl p-4">
+    <img src="./assets/nyquist-sampling.png" alt="샘플링레이트에 따른 파형 기록 비교" class="mx-auto max-h-80 object-contain" />
+  </div>
+  <div class="text-left">
+    <div class="mt-6 p-4 border rounded-xl text-center">
+      <p>측정하려는 최고 진동수의 2배 이상으로 기록</p>
+      <p class="text-xl font-semibold">f<sub>s</sub> &ge; 2f<sub>max</sub></p>
+    </div>
+  </div>
+</div>
+
+> 그림 출처: `https://medium.com/geekculture/signal-processing-the-nyquist-frequency-683269ca70fb`
 
 ---
 
