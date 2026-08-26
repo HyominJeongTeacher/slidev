@@ -14,12 +14,16 @@
     </a>
   </div>
   <div class="p-4 border rounded-xl">
-    <h3>Padlet</h3>
-    <p>질문과 자료 공유</p>
+    <a href="https://padlet.com/hyominjeongwork/padlet-tfydh3uv587v4mv2">
+      <h3>Padlet</h3>
+      <p>질문과 자료 공유</p>
+    </a>
   </div>
   <div class="p-4 border rounded-xl">
-    <h3>오픈카톡</h3>
-    <p>연수 중 소통과 안내</p>
+    <a href="https://open.kakao.com/o/sG1pDCyd">
+      <h3>오픈카톡</h3>
+      <p>연수 중 소통과 안내</p>
+    </a>
   </div>
 </div>
 
@@ -30,10 +34,14 @@
     </a>
   </div>
   <div class="border rounded-xl p-3">
-    <img src="./assets/padlet-qr.png" alt="Padlet QR 코드" class="mx-auto h-36 object-contain" />
+    <a href="https://padlet.com/hyominjeongwork/padlet-tfydh3uv587v4mv2">
+      <img src="./assets/padlet-qr.png" alt="Padlet QR 코드" class="mx-auto h-36 object-contain" />
+    </a>
   </div>
   <div class="border rounded-xl p-3">
-    <img src="./assets/openchat-qr.png" alt="오픈카톡 QR 코드" class="mx-auto h-36 object-contain" />
+    <a href="https://open.kakao.com/o/sG1pDCyd">
+      <img src="./assets/openchat-qr.png" alt="오픈카톡 QR 코드" class="mx-auto h-36 object-contain" />
+    </a>
   </div>
 </div>
 
