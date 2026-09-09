@@ -13,6 +13,10 @@ mdc: true
 자동 생성된 Slidev 슬라이드입니다.
 
 ---
+src: ./sections/Intro.md
+---
+
+---
 src: ./sections/Sec01.md
 ---
 
@@ -26,4 +30,8 @@ src: ./sections/Sec03.md
 
 ---
 src: ./sections/Sec04.md
+---
+
+---
+src: ./sections/Outro.md
 ---
