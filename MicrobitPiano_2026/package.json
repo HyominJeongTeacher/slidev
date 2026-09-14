@@ -1,0 +1,20 @@
+{
+  "name": "openlab-2026-02-sound",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md --base /slidev/"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.19.1",
+    "@slidev/theme-seriph": "^0.25.0",
+    "playwright-chromium": "^1.62.1"
+  },
+  "description": "",
+  "main": "build-slides.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

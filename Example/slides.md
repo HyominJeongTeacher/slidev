@@ -1,37 +1,33 @@
 ---
-theme: seriph
-title: 웹 개발 입문 강의 자료
-info: Node.js로 자동 생성된 Slidev 프레젠테이션
+theme: apple-basic
+background: https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920
+title: 2026 개방실험실 활용 연수_소리
+info: MBL 기반 소리 측정과 파동 분석 수업 재구성
 class: text-center
 drawings:
   persist: false
 transition: slide-left
 mdc: true
+math: true
+css: ./styles/index.css
 ---
 
-# 웹 개발 입문
-자동 생성된 Slidev 슬라이드입니다.
+2026년 개방실험실 보유 실험기자재 활용 과학탐구실험 자율연수(물리)
+# MBL 기반 소리 측정과 파동 분석 수업
+경기과학고등학교 정효민
 
 ---
-src: ./sections/Intro.md
----
-
----
-src: ./sections/Sec01.md
----
-
----
-src: ./sections/Sec02.md
+src: ./slides/1.Intro/Intro.md
 ---
 
 ---
-src: ./sections/Sec03.md
+src: ./slides/2.Contents/Contents.md
 ---
 
 ---
-src: ./sections/Sec04.md
+src: ./slides/3.Sections/Sections.md
 ---
 
 ---
-src: ./sections/Outro.md
+src: ./slides/4.Outro/Outro.md
 ---

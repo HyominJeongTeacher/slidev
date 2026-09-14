@@ -1,0 +1,101 @@
+---
+layout: default
+math: true
+---
+
+# 2. 소리 파동의 최소 이론
+
+<div class="text-2xl mt-8 text-blue-600 font-semibold">측정 결과를 해석하기 위해 필요한 개념만 확인한다.</div>
+
+---
+
+# 파형 읽기: 진폭, 주기, 진동수
+
+<div class="grid grid-cols-3 gap-6 mt-8 text-left">
+<div class="p-5 border rounded-xl">
+<h3>진폭</h3>
+<p>음압 변화의 크기</p>
+<p>음압 진폭이 클수록 일반적으로 크게 들린다.</p>
+</div>
+
+<div class="p-5 border rounded-xl">
+<h3>주기</h3>
+<p>파형이 한 번 반복되는 시간</p>
+<p>단위: s</p>
+</div>
+
+<div class="p-5 border rounded-xl">
+<h3>진동수</h3>
+<p>1초 동안의 진동 횟수</p>
+<p>단위: Hz</p>
+</div>
+</div>
+
+<div class="mt-8 text-center">
+진동수와 주기의 관계
+</div>
+
+$$
+f = \frac{1}{T}
+$$
+
+---
+
+# MBL은 무엇을 기록하는가?
+
+- MBL 소리 센서는 시간에 따른 음압 변화 또는 전기 신호를 연속 데이터로 기록한다.
+- 샘플링레이트(fs)는 1초 동안 기록하는 데이터 수이다.
+- 나이퀴스트 조건: 진동수 $f$인 신호를 기록하려면 샘플링레이트 $f_s$는 최소 $2f$ 이상이어야 한다.
+  - 예: $440\,\text{Hz}$ 소리는 최소 $880\,\text{Hz}$ 이상으로 기록한다.
+- 분석하려는 최고 주파수(fmax)에 대해 다음 조건이 필요하다.
+
+$$
+f_s \geq 2f_{max}
+$$
+
+- 실제 수업에서는 파형을 충분히 매끄럽게 보기 위해 최소 조건보다 높은 샘플링레이트를 사용한다.
+
+---
+
+# 나이퀴스트 조건을 그림으로 이해하기
+
+<div class="grid grid-cols-2 gap-8 mt-6 items-center">
+  <div class="border rounded-xl p-4">
+    <img src="./assets/nyquist-sampling.png" alt="샘플링레이트에 따른 파형 기록 비교" class="mx-auto max-h-80 object-contain" />
+  </div>
+  <div class="text-left">
+    <div class="mt-6 p-4 border rounded-xl text-center">
+      <p>측정하려는 최고 진동수의 2배 이상으로 기록</p>
+      <p class="text-xl font-semibold">f<sub>s</sub> &ge; 2f<sub>max</sub></p>
+    </div>
+  </div>
+</div>
+
+> 그림 출처: `https://medium.com/geekculture/signal-processing-the-nyquist-frequency-683269ca70fb`
+
+---
+
+# 중첩과 같은 주파수의 간섭
+
+두 음파가 만날 때 순간 변위는 합으로 기록된다.
+
+$$
+y = y_1 + y_2
+$$
+
+- 같은 주파수의 두 음원은 위상차가 일정하다.
+- 마이크 위치에 따라 보강 간섭과 상쇄 간섭이 나타난다.
+- 따라서 이 활동은 시간에 따른 음량 변화가 아니라, <strong>공간에 따른 세기 변화</strong>를 관찰하는 실험이다.
+
+---
+
+# 맥놀이
+
+- 주파수가 조금 다른 두 음파가 중첩되면 시간에 따라 전체 진폭이 커졌다 작아진다.
+- 이 진폭 변화의 진동수를 맥놀이 진동수라고 한다.
+
+$$
+f_{\text{beat}} = |f_1 - f_2|
+$$
+
+- 예: 220 Hz와 222 Hz를 합성하면 2 Hz의 맥놀이가 나타난다.
