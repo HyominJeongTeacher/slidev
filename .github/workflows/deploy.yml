@@ -28,14 +28,15 @@ jobs:
 
       - name: Install & Build All Projects
         run: |
-          mkdir -p dist/slidev
+          mkdir -p dist
           for dir in slidev/*/; do
             if [ -d "$dir" ]; then
               proj=$(basename "$dir")
               echo "Building $proj..."
               cd "$dir"
               npm install
-              npx slidev build --base "/slidev/$proj/" --out "../../dist/slidev/$proj"
+              # --out 경로에서 slidev/ 중복 제거
+              npx slidev build --base "/slidev/$proj/" --out "../../dist/$proj"
               cd ../..
             fi
           done
