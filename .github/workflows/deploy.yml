@@ -29,25 +29,31 @@ jobs:
         run: |
           mkdir -p dist
 
-          # 1. 루트 진입 시 404를 방지하기 위한 기본 index.html 생성
+          # 1. 루트 진입 시 프로젝트 목록을 보여주는 index.html 생성
           cat << 'EOF' > dist/index.html
           <!DOCTYPE html>
           <html>
           <head>
             <meta charset="utf-8">
             <title>Slidev Presentations</title>
+            <style>
+              body { font-family: sans-serif; padding: 2rem; line-height: 1.6; }
+              ul { list-style-type: square; }
+              a { color: #0066cc; text-decoration: none; font-weight: bold; }
+              a:hover { text-decoration: underline; }
+            </style>
           </head>
           <body>
             <h1>Slidev Presentations List</h1>
-            <p>프로젝트 슬라이드 목록:</p>
+            <p>접속할 슬라이드 프로젝트를 선택하세요:</p>
             <ul>
-              <li><a href="./MicrobitPiano_2026/">MicrobitPiano_2026</a></li>
+              <li><a href="/slidev/MicrobitPiano_2026/">MicrobitPiano_2026</a></li>
             </ul>
           </body>
           </html>
           EOF
 
-          # 2. 루트 레벨의 프로젝트 폴더 순회 및 빌드
+          # 2. 루트 레벨 프로젝트 폴더 순회 및 빌드
           for dir in */; do
             if [ "$dir" != "dist/" ] && [ "${dir#\.}" = "$dir" ]; then
               proj=$(basename "$dir")
@@ -59,10 +65,10 @@ jobs:
                 cd "$dir"
                 npm ci || npm install
                 
-                # relative base(./) 옵션으로 빌드하여 경로 오류 차단
-                npx @slidev/cli build --base "./" --out "../dist/$proj" || echo "Failed to build $proj"
+                # Base 경로를 /slidev/프로젝트명/ 으로 정확히 지정
+                npx @slidev/cli build --base "/slidev/$proj/" --out "../dist/$proj" || echo "Failed to build $proj"
                 
-                # SPA 라우팅 지원을 위해 index.html을 404.html로 복사
+                # SPA 라우팅 지원용 404.html 복사
                 if [ -f "../dist/$proj/index.html" ]; then
                   cp "../dist/$proj/index.html" "../dist/$proj/404.html"
                 fi
