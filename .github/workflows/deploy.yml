@@ -1,9 +1,8 @@
-name: Deploy Slidev
+name: Deploy Slidev Projects
 
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches: [ main ] # 또는 master
 
 permissions:
   contents: read
@@ -11,39 +10,45 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: OpenLab_2026_02_Sound.2/package-lock.json
-
-      - name: Install dependencies
-        working-directory: OpenLab_2026_02_Sound.2
-        run: npm ci
-
-      - name: Build presentation
-        working-directory: OpenLab_2026_02_Sound.2
-        run: npm run build
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: OpenLab_2026_02_Sound.2/dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
     steps:
-      - id: deployment
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install & Build All Projects
+        run: |
+          mkdir -p dist/slidev
+          # slidev 폴더 안의 모든 하위 디렉터리 순회
+          for dir in slidev/*/; do
+            if [ -d "$dir" ]; then
+              proj=$(basename "$dir")
+              echo "Building $proj..."
+              cd "$dir"
+              npm install
+              # base 경로를 /slidev/프로젝트명/ 으로 지정하여 빌드
+              npx slidev build --base "/slidev/$proj/" --out "../../dist/slidev/$proj"
+              cd ../..
+            fi
+          done
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
