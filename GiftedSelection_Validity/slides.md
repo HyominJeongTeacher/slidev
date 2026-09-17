@@ -20,32 +20,35 @@ mdc: true
 ---
 
 # 목차
-
-- **1부.** 2027학년도 문항 분석
+- **교장선생님 말씀**
+- **1부.** **2027학년도** 문항 분석
   - 1-1. 영재성검사1 수학
   - 1-2. 영재성검사1 과학
   - 1-3. 영재성검사2
-- **2부.** 신입생 선발 도구 분석
-  - 2-1. 2026학년도 신입생 선발 및 입학 후 성적 상관관계 분석
-  - 2-2. 2027학년도 신입생 선발 전형 단계 간 타당성 분석
+  - 1-4. 대면관찰평가
+- **2부.** 신입생선발 도구 분석
+  - 2-1. **2026학년도** 신입생선발 및 입학 후 성적 상관관계 분석
+  - 2-2. **2027학년도** 신입생선발 전형 단계 간 타당성 분석
+- **3부.** 교과/팀별 협의
+- **4부.** 전체 협의
 
 <!--
 발표자 노트: 오늘 발표는 크게 두 부분으로 구성됩니다.
 1부에서는 2027학년도 선발 문항의 난이도와 변별도를 분석하고,
-2부에서는 2-1(2026학년도 신입생 선발시험 성적과 입학 후 1학기 성적 간의 상관관계)과
-2-2(2027학년도 신입생 선발 전형 단계 간 상호 타당성)를 차례로 검토합니다.
+2부에서는 2-1(2026학년도 신입생선발시험 성적과 입학 후 1학기 성적 간의 상관관계)과
+2-2(2027학년도 신입생선발 전형 단계 간 상호 타당성)를 차례로 검토합니다.
 -->
 
 ---
 layout: section
 ---
 
-# 1부. 2027학년도 신입생 선발 문항 분석
+# 1부. 2027학년도 신입생선발 <br> 문항 분석
 
 난이도와 변별도 분석
 
 <!--
-발표자 노트: 1부에서는 2027학년도 신입생 선발에 사용된 문항들의
+발표자 노트: 1부에서는 2027학년도 신입생선발에 사용된 문항들의
 난이도와 변별도를 분석하여 문항의 적절성과 변별력을 검토합니다.
 -->
 
@@ -101,6 +104,41 @@ layout: section
 발표자 노트: 변별도는 상위 27%와 하위 27% 응시자를 얼마나 잘 구분하는지를
 나타냅니다. 27% 기준은 Kelley(1939)의 최적화 연구에서, 변별도 판정 기준은
 Ebel & Frisbie(1991)에서 가져왔습니다.
+-->
+---
+
+# 난이도와 변별도 정의(대면관찰평가)
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+## 변별도 (Discrimination Index)
+
+- 각 학생의 문항 점수와 해당 문항을 제외한 총점(Corrected Total Score) 간의 상관계수 계산
+- $r_{i(t-i)} = \text{CORREL}(\text{문항점수}, \text{총점} - \text{문항점수})$
+- 문항 자신의 점수가 총점에 포함되어 상관계수가 부풀려지는 자가상관(Autocorrelation) 현상을 방지함
+- 값이 높을수록 전체 성적이 높은 학생이 해당 문항을 맞혔음을 의미함 (소규모 표본에 적합)
+
+</div>
+<div>
+
+| 변별도 수준 | 판정 |
+|---|---|
+| r < 0.20 | Poor (부적절, 제거/수정 검토) |
+| 0.20 ~ 0.29 | Marginal (보통, 개선 필요) |
+| 0.30 ~ 0.39 | Good (양호) |
+| r ≥ 0.40 | Excellent (우수) |
+
+<p class="text-sm opacity-60">출처: Ebel, R. L., & Frisbie, D. A. (1991). <i>Essentials of Educational Measurement</i> (5th ed.). Prentice-Hall.</p>
+<p class="text-xs opacity-50">보조 참고: Nunnally, J. C., & Bernstein, I. H. (1994). <i>Psychometric Theory</i> (3rd ed.). McGraw-Hill.</p>
+
+</div>
+</div>
+
+<!--
+발표자 노트: 변별도는 해당 문항을 제외한 총점과 문항 점수 간의 상관계수로 산출합니다.
+자가상관을 제거한 교정된 상관계수(r)를 사용하며, 0.20 미만은 전체 검사 목적과
+이질적이거나 변별력이 부족한 문항으로 판단하여 수정/삭제를 검토합니다.
 -->
 
 ---
@@ -323,6 +361,86 @@ const maxCount13 = Math.max(...pBins13.map(b => b.count), ...dBins13.map(b => b.
 </div>
 </div>
 
+- 소문항 별 변별도 표시
+  - 소문항 20개로 구성된 문항 4개
+
+<!--
+발표자 노트: 영재성검사2 문항별 원자료(items13)를 0.1 단위 구간으로
+나눈 도수분포 히스토그램입니다. 실제 데이터로 교체해야 합니다.
+-->
+
+---
+
+# 1-4. 대면관찰평가
+
+<script setup>
+const items13 = [
+  { label: '1번', p: 0.68, d: 0.62 },
+  { label: '2번', p: 0.83, d: 0.63 },
+  { label: '3번', p: 0.62, d: 0.61 },
+  { label: '4번', p: 0.6, d: 0.58 },
+  { label: '5번', p: 0.61, d: 0.71 },
+  { label: '6번', p: 0.66, d: 0.7 },
+  { label: '7번', p: 0.54, d: 0.61 },
+  { label: '8번', p: 0.66, d: 0.61 },
+  { label: '9번', p: 0.24, d: 0.56 },
+  { label: '10번', p: 0.41, d: 0.31 },
+  { label: '11번', p: 0.45, d: 0.64 },
+  { label: '12번', p: 0.17, d: 0.54 },
+  { label: '13번', p: 0.14, d: 0.35 },
+  { label: '14번', p: 0.1, d: 0.55 },
+  { label: '15번', p: 0.02, d: 0.12 },
+]
+
+function histogram13(values, binSize = 0.1) {
+  const bins = []
+  for (let b = 0; b < 1 - 1e-9; b += binSize) {
+    const lo = +b.toFixed(2)
+    const hi = +(b + binSize).toFixed(2)
+    const count = values.filter(v => v >= lo && (hi >= 1 ? v <= hi : v < hi)).length
+    bins.push({ label: lo.toFixed(1), count })
+  }
+  return bins
+}
+
+const pBins13 = histogram13(items13.map(i => i.p))
+const dBins13 = histogram13(items13.map(i => i.d))
+const maxCount13 = Math.max(...pBins13.map(b => b.count), ...dBins13.map(b => b.count))
+</script>
+
+<div class="grid grid-cols-2 gap-8 mt-4">
+<div>
+
+**난이도(P) 분포 (문항 수 {{ items13.length }}개)**
+
+<div class="flex items-end justify-around gap-1 h-40 border-b border-gray-400">
+<div v-for="bin in pBins13" :key="bin.label" class="flex flex-col items-center gap-1 h-full justify-end w-6">
+<div class="text-xs">{{ bin.count || '' }}</div>
+<div class="w-full bg-blue-400" :style="{ height: (bin.count / maxCount13 * 100) + '%' }"></div>
+<div class="text-xs origin-top-left -rotate-45 whitespace-nowrap">{{ bin.label }}</div>
+</div>
+</div>
+
+</div>
+<div>
+
+**변별도(D) 분포 (문항 수 {{ items13.length }}개)**
+
+<div class="relative flex items-end justify-around gap-1 h-40 border-b border-gray-400">
+<div v-for="bin in dBins13" :key="bin.label" class="flex flex-col items-center gap-1 h-full justify-end w-6">
+<div class="text-xs">{{ bin.count || '' }}</div>
+<div class="w-full" :class="Number(bin.label) >= 0.3 ? 'bg-green-400' : 'bg-orange-400'" :style="{ height: (bin.count / maxCount13 * 100) + '%' }"></div>
+<div class="text-xs origin-top-left -rotate-45 whitespace-nowrap">{{ bin.label }}</div>
+</div>
+</div>
+<p class="text-xs opacity-60 mt-2">초록 = D ≥ 0.30 (양호 기준 이상)</p>
+
+</div>
+</div>
+
+- 표본수가 29개로 적어 변별도는 "교정된 문항-총점 상관계수"로 계산
+- 소문항 별 변별도 표시
+  - 소문항 15개로 구성된 문항 5개
 <!--
 발표자 노트: 영재성검사2 문항별 원자료(items13)를 0.1 단위 구간으로
 나눈 도수분포 히스토그램입니다. 실제 데이터로 교체해야 합니다.
@@ -332,12 +450,12 @@ const maxCount13 = Math.max(...pBins13.map(b => b.count), ...dBins13.map(b => b.
 layout: section
 ---
 
-# 2부. 신입생 선발 도구 분석
+# 2부. 신입생선발 도구 분석
 
 2026학년도 성적 상관관계 및 2027학년도 전형 단계 간 타당성
 
 <!--
-발표자 노트: 2부에서는 신입생 선발 도구를 두 가지 측면에서 분석합니다.
+발표자 노트: 2부에서는 신입생선발 도구를 두 가지 측면에서 분석합니다.
 2-1에서는 2026학년도 선발시험 성적과 입학 후 1학기 성적 간의 상관관계를,
 2-2에서는 2027학년도 선발 전형 단계 간 상호 타당성을 검토합니다.
 -->
@@ -346,7 +464,7 @@ layout: section
 layout: section
 ---
 
-# 2-1. 2026학년도 신입생 선발 분석
+# 2-1. 2026학년도 신입생선발 <br> 분석
 
 선발 점수 vs 1학년 1학기 성적
 
@@ -630,10 +748,10 @@ const dsMock2 = buildDataset4('영검2 vs 수과정 평균', rowsD4.map(r => r.m
 
 ## 본 분석과의 대조
 
-- 본 선발 도구와 1학기 성적 간 상관관계($R^2 \approx$ [0.XX])는
+- 본 선발 도구와 1학기 성적 간 상관관계($R^2 \approx$ [0.11])는
   Cohen의 최소 기준($R^2 \ge 0.10$)을 상회
 - SAT 사례($R^2 \approx 0.25$)와 비교했을 때
-  **유사/다소 낮은** 수준의 설명력을 보임
+  **유사한 수준**의 설명력을 보임
 
 </div>
 </div>
@@ -653,7 +771,7 @@ SAT라는 국제적으로 검증된 표준화 시험 사례를 근거로 제시�
 layout: section
 ---
 
-# 2-2. 2027학년도 신입생 선발 분석
+# 2-2. 2027학년도 신입생선발 <br> 분석
 
 1차 · 2차 · 3차 전형 단계 간 비교
 
@@ -697,7 +815,7 @@ layout: section
 
 ---
 
-# 전형 단계 간 상관관계 ($R^2$ 및 $r$ 해석)
+# 전형 단계 간 상관관계 ($R^2$ 및 $R$ 해석)
 
 <script setup>
 import csvRaw22 from './data/2-2-correlations.csv?raw'
@@ -711,18 +829,20 @@ const dsSciFusion = buildDataset22('영재성검사1(과학) vs 영재성검사2
 const dsQuantPaper = buildDataset22('1단계 서류 정량 vs 영재성검사1총점', rows22.map(r => r.doc_quant), rows22.map(r => r.test_math + r.test_sci))
 const dsQualActivity = buildDataset22('1단계 서류 정성 vs 3단계 활동', rows22.map(r => r.doc_qual), rows22.map(r => r.activity))
 const dsPaperActivity = buildDataset22('영재성검사1총점 vs 3단계 활동', rows22.map(r => r.test_math + r.test_sci), rows22.map(r => r.activity))
+const dsQualPaper = buildDataset22('1단계 서류 정성 vs 영재성검사1총점', rows22.map(r => r.doc_qual), rows22.map(r => r.test_math + r.test_sci))
+
 </script>
 
 ## 영재성검사1(수학/과학) vs 영재성검사2
 
-| 비교 항목 | $r$ | $R^2$ |
+| 비교 항목 | $R$ | $R^2$ |
 |---|---|---|
 | 영재성검사1(수학) vs 영재성검사2 | {{ dsMathFusion.r.toFixed(2) }} | {{ dsMathFusion.r2.toFixed(2) }} |
 | 영재성검사1(과학) vs 영재성검사2 | {{ dsSciFusion.r.toFixed(2) }} | {{ dsSciFusion.r2.toFixed(2) }} |
 
 ## 1단계 서류 정성/정량 vs 영재성검사1총점 vs 3차 활동
 
-| 비교 항목 | $r$ | $R^2$ |
+| 비교 항목 | $R$ | $R^2$ |
 |---|---|---|
 | 1단계 서류 정량 vs 영재성검사1총점 | {{ dsQuantPaper.r.toFixed(2) }} | {{ dsQuantPaper.r2.toFixed(2) }} |
 | 1단계 서류 정성 vs 3단계 활동 | {{ dsQualActivity.r.toFixed(2) }} | {{ dsQualActivity.r2.toFixed(2) }} |
@@ -856,7 +976,46 @@ const dsQP = buildDatasetQP('1단계 서류 정량 vs 영재성검사1총점', r
 
 ---
 
-# 1단계 서류 정성 vs 3단계 활동
+# 1단계 서류 정성 vs 영재성검사1총점
+
+<script setup>
+import csvRawQLP from './data/2-2-correlations.csv?raw'
+import { parseCSV as parseCSVQLP, buildDataset as buildDatasetQLP } from './utils/stats.js'
+
+const rowsQLP = parseCSVQLP(csvRawQLP)
+const dsQLP = buildDatasetQLP('1단계 서류 정성 vs 영재성검사1총점', rowsQLP.map(r => r.doc_qual), rowsQLP.map(r => r.test_math + r.test_sci))
+</script>
+
+<div class="grid grid-cols-2 gap-6 items-center mt-4">
+<div>
+
+- **R** = {{ dsQLP.r.toFixed(3) }}
+- **R²** = {{ dsQLP.r2.toFixed(3) }}
+- 표본 수 = {{ dsQLP.points.length }}명
+
+</div>
+<div class="flex-1">
+<svg viewBox="0 0 100 100" class="w-full h-64 border border-gray-300 bg-gray-50">
+<line v-for="t in dsQLP.xTicks" :key="'x'+t.value" :x1="t.pos" y1="0" :x2="t.pos" y2="100" stroke="#d1d5db" stroke-width="0.3" />
+<line v-for="t in dsQLP.yTicks" :key="'y'+t.value" x1="0" :y1="t.pos" x2="100" :y2="t.pos" stroke="#d1d5db" stroke-width="0.3" />
+<text v-for="t in dsQLP.xTicks" :key="'xt'+t.value" :x="t.pos" y="98" font-size="1" text-anchor="middle" fill="#6b7280">{{ t.value }}</text>
+<text v-for="t in dsQLP.yTicks" :key="'yt'+t.value" x="1" :y="t.pos" font-size="1" text-anchor="start" dominant-baseline="middle" fill="#6b7280">{{ t.value }}</text>
+<line :x1="dsQLP.line.x1" :y1="dsQLP.line.y1" :x2="dsQLP.line.x2" :y2="dsQLP.line.y2" stroke="red" stroke-width="1" />
+<circle v-for="(p, i) in dsQLP.points" :key="i" :cx="p.cx" :cy="p.cy" r="2" fill="#3b82f6" />
+</svg>
+<div class="text-xs text-center opacity-60 mt-1">1단계 서류 정성 점수 →</div>
+</div>
+</div>
+
+<!--
+발표자 노트: 1단계 서류 정성 점수와 영재성검사1총점(수학+과학) 간의 산점도와
+회귀선입니다. data/2-2-correlations.csv의 doc_qual, test_math, test_sci
+열을 기반으로 자동 계산됩니다.
+-->
+
+---
+
+# 1단계 서류 정성 vs 3단계
 
 <script setup>
 import csvRawQA from './data/2-2-correlations.csv?raw'
@@ -895,7 +1054,7 @@ data/2-2-correlations.csv의 doc_qual, activity 열을 실제 데이터로
 
 ---
 
-# 영재성검사1총점 vs 3단계 활동
+# 영재성검사1총점 vs 3단계
 
 <script setup>
 import csvRawPA from './data/2-2-correlations.csv?raw'
@@ -934,16 +1093,15 @@ const dsPA = buildDatasetPA('영재성검사1총점 vs 3단계 활동', rowsPA.m
 
 ---
 
-# 2-2 해석: 평가 도구 간 판별 타당도(Discriminant Validity)
+# 2-2 해석: 평가 도구 간 판별 타당도
 
-<div class="grid grid-cols-2 gap-4">
 <div>
 
 ## 판단 기준
 
 - 서류평가의 목적은 영재성검사1 응시생을 뽑는것, 상관관계 높을수록 좋음
-- 정량보다 정성이 영재성검사1과 상관관계 높음. r ≈ 0.37로 현실적으로 잘 작동한다고 보여짐(정성 추가 예정)
-- 영재성검사1, 2의 상관관계 높음, 타당도는 높지만 서로 다른 영역을 선발한다는 느낌이 부족하다고 할수도 있음.
+  - 정량보다 정성이 영재성검사1과 상관관계 높음. r ≈ 0.4로 현실적으로 잘 작동한다고 보여짐
+- 영재성검사1, 2의 상관관계 높음(r ≈ 0.6), 타당도는 높지만 서로 다른 영역을 선발한다는 느낌이 부족하다고 할수도 있음.
   <br> <span class="text-sm opacity-60">※ 약한~보통 수준(r ≈ 0.2~0.5)이 오히려 이상적: 서로 관련은 있으나
   독립적인 역량을 평가한다는 증거, Campbell & Fiske(1959)의 판별 타당도(Discriminant Validity)</span>
 - 영재성검사2와 영재성캠프 상관관계 r ≈ 0.12로 낮은 상관관계(추가 예정)
@@ -972,7 +1130,6 @@ const dsPA = buildDatasetPA('영재성검사1총점 vs 3단계 활동', rowsPA.m
   평가하고 있음을 시사
 -->
 </div>
-</div>
 
 > 전형 단계 간 상관관계가 **지나치게 높거나 낮지 않고 적당한 수준**일 때,
 > 해당 전형 설계는 서로 독립적인 역량을 평가하는 타당한 구조로
@@ -988,14 +1145,20 @@ by the multitrait-multimethod matrix. Psychological Bulletin, 56(2), 81-105.
 -->
 
 ---
+layout: section
+---
 
-# 2-2 협의회 준비 사항
+# 3. 팀별 협의회
+
+---
+
+# 1차 · 2차 · 3차 전형 단계 간 비교
 - 팀별 준비 자료
-  - 선발결과 디테일 자료 2개 (2026분석, 2027분석, 개인정보 삭제 버전, 팀별 노트북에 탑재)
+  - 선발결과 디테일 자료 2개 (2026+1학기성적 분석, 2027분석, 개인정보 삭제 버전, 팀별 노트북에 탑재)
   - 문항분석결과 자료 2개 (2026분석, 2027분석, 개인정보 삭제 버전, 팀별 노트북에 탑재)
   - 문항원안지 2개 (2026분석, 2027분석, 개인정보 삭제 버전, 팀별 인쇄본 1부)
 
-- 2부 논의사항
+- 논의사항
   - 과목별 문항 검토
   - 내년 문항 출제 개선안
   - 전체 세미나(11~12월 예정) 안건 제안을 위한 사전 토론
@@ -1030,6 +1193,7 @@ by the multitrait-multimethod matrix. Psychological Bulletin, 56(2), 81-105.
   [https://doi.org/10.1037/h0046016](https://doi.org/10.1037/h0046016)
 - Ebel, R. L., & Frisbie, D. A. (1991). *Essentials of Educational Measurement* (5th ed.). Prentice-Hall.
   [https://openlibrary.org/works/OL4471505W](https://openlibrary.org/works/OL4471505W)
+- Nunnally, J. C., & Bernstein, I. H. (1994). *Psychometric Theory* (3rd ed.). McGraw-Hill.
 - MetricGate. (2025). *Discrimination Index (Item Analysis)* [Web application].
   [https://metricgate.com/docs/discrimination-index-item-analysis/](https://metricgate.com/docs/discrimination-index-item-analysis/)
 
