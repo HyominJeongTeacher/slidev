@@ -14,7 +14,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # 1. 빌드 작업
   build:
     runs-on: ubuntu-latest
     steps:
@@ -24,20 +23,28 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24 # Node 20 경고 해결
+          node-version: 24
 
       - name: Install & Build All Projects
         run: |
-          mkdir -p dist
-          for dir in slidev/*/; do
-            if [ -d "$dir" ]; then
+          mkdir -p dist/slidev
+          
+          # 최상위에 있는 디렉터리 중 .으로 시작하지 않는 프로젝트 폴더들을 순회
+          for dir in */; do
+            # dist 폴더 및 점(.)으로 시작하는 폴더 제외
+            if [ "$dir" != "dist/" ] && [ "${dir#\.}" = "$dir" ]; then
               proj=$(basename "$dir")
-              echo "Building $proj..."
-              cd "$dir"
-              npm install
-              # --out 경로에서 slidev/ 중복 제거
-              npx slidev build --base "/slidev/$proj/" --out "../../dist/$proj"
-              cd ../..
+              
+              # package.json 파일이 있는 경우에만 Slidev 프로젝트로 간주하여 빌드
+              if [ -f "$dir/package.json" ]; then
+                echo "=========================================="
+                echo "Building project: $proj"
+                echo "=========================================="
+                cd "$dir"
+                npm install
+                npx slidev build --base "/slidev/$proj/" --out "../dist/slidev/$proj"
+                cd ..
+              fi
             fi
           done
 
@@ -46,7 +53,6 @@ jobs:
         with:
           path: './dist'
 
-  # 2. 실제 배포 작업 (Settings에서 GitHub Actions 선택 시 활성화)
   deploy:
     environment:
       name: github-pages
