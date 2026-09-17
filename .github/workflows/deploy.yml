@@ -27,8 +27,27 @@ jobs:
 
       - name: Install & Build All Projects
         run: |
-          mkdir -p dist/slidev
+          mkdir -p dist
 
+          # 1. 루트 진입 시 404를 방지하기 위한 기본 index.html 생성
+          cat << 'EOF' > dist/index.html
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>Slidev Presentations</title>
+          </head>
+          <body>
+            <h1>Slidev Presentations List</h1>
+            <p>프로젝트 슬라이드 목록:</p>
+            <ul>
+              <li><a href="./MicrobitPiano_2026/">MicrobitPiano_2026</a></li>
+            </ul>
+          </body>
+          </html>
+          EOF
+
+          # 2. 루트 레벨의 프로젝트 폴더 순회 및 빌드
           for dir in */; do
             if [ "$dir" != "dist/" ] && [ "${dir#\.}" = "$dir" ]; then
               proj=$(basename "$dir")
@@ -39,8 +58,14 @@ jobs:
                 echo "=========================================="
                 cd "$dir"
                 npm ci || npm install
-                # slidev 빌드 수행 (오류가 나도 다음 작업 진행되도록 감싸기)
-                npx @slidev/cli build --base "/slidev/$proj/" --out "../dist/slidev/$proj" || echo "Failed to build $proj"
+                
+                # relative base(./) 옵션으로 빌드하여 경로 오류 차단
+                npx @slidev/cli build --base "./" --out "../dist/$proj" || echo "Failed to build $proj"
+                
+                # SPA 라우팅 지원을 위해 index.html을 404.html로 복사
+                if [ -f "../dist/$proj/index.html" ]; then
+                  cp "../dist/$proj/index.html" "../dist/$proj/404.html"
+                fi
                 cd ..
               fi
             fi
