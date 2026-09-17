@@ -1,94 +1,31 @@
-name: Deploy Slidev Projects
+name: Deploy Microbit Piano
 
 on:
   push:
-    branches: [ main ] # 또는 master
+    branches: [ microbit-piano ]
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
-
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 24
 
-      - name: Install & Build All Projects
+      - name: Build Slidev
         run: |
-          mkdir -p dist
+          cd MicrobitPiano_2026
+          npm ci || npm install
+          npx @slidev/cli build --base "/slidev/" --out "../dist"
 
-          # 1. 루트 진입 시 프로젝트 목록을 보여주는 index.html 생성
-          cat << 'EOF' > dist/index.html
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta charset="utf-8">
-            <title>Slidev Presentations</title>
-            <style>
-              body { font-family: sans-serif; padding: 2rem; line-height: 1.6; }
-              ul { list-style-type: square; }
-              a { color: #0066cc; text-decoration: none; font-weight: bold; }
-              a:hover { text-decoration: underline; }
-            </style>
-          </head>
-          <body>
-            <h1>Slidev Presentations List</h1>
-            <p>접속할 슬라이드 프로젝트를 선택하세요:</p>
-            <ul>
-              <li><a href="/slidev/MicrobitPiano_2026/">MicrobitPiano_2026</a></li>
-            </ul>
-          </body>
-          </html>
-          EOF
-
-          # 2. 루트 레벨 프로젝트 폴더 순회 및 빌드
-          for dir in */; do
-            if [ "$dir" != "dist/" ] && [ "${dir#\.}" = "$dir" ]; then
-              proj=$(basename "$dir")
-              
-              if [ -f "$dir/package.json" ]; then
-                echo "=========================================="
-                echo "Building project: $proj"
-                echo "=========================================="
-                cd "$dir"
-                npm ci || npm install
-                
-                # Base 경로를 /slidev/프로젝트명/ 으로 정확히 지정
-                npx @slidev/cli build --base "/slidev/$proj/" --out "../dist/$proj" || echo "Failed to build $proj"
-                
-                # SPA 라우팅 지원용 404.html 복사
-                if [ -f "../dist/$proj/index.html" ]; then
-                  cp "../dist/$proj/index.html" "../dist/$proj/404.html"
-                fi
-                cd ..
-              fi
-            fi
-          done
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
