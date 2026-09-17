@@ -14,10 +14,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # 1. 빌드 작업
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,19 +24,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 24 # Node 20 경고 해결
 
       - name: Install & Build All Projects
         run: |
           mkdir -p dist/slidev
-          # slidev 폴더 안의 모든 하위 디렉터리 순회
           for dir in slidev/*/; do
             if [ -d "$dir" ]; then
               proj=$(basename "$dir")
               echo "Building $proj..."
               cd "$dir"
               npm install
-              # base 경로를 /slidev/프로젝트명/ 으로 지정하여 빌드
               npx slidev build --base "/slidev/$proj/" --out "../../dist/slidev/$proj"
               cd ../..
             fi
@@ -49,6 +45,14 @@ jobs:
         with:
           path: './dist'
 
+  # 2. 실제 배포 작업 (Settings에서 GitHub Actions 선택 시 활성화)
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
